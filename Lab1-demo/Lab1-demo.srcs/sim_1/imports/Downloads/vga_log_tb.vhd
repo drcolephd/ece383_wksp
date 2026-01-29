@@ -31,7 +31,7 @@ architecture tb of vga_log_tb is
   constant LOG_FILENAME : string := "vga_log.txt";
 
   -- How long to run
-  constant RUN_TIME : time := 40 ms;
+  constant RUN_TIME : time := 60 ms;
   -- ===========================
 
   signal clk     : std_logic := '0';
@@ -80,7 +80,7 @@ begin
     
     -- Turn on/off ch1 and ch2
     ch1.en <= '1';
-    ch2.en <= '0';    
+    ch2.en <= '1';    
     ch1.active <= '1' when (position.row = position.col) else '0';
     ch2.active <= '1' when (position.row = 440 - position.col) else '0';
 

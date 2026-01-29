@@ -1,9 +1,24 @@
 Vivado Simulator v2024.2.0
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot instructor_tb_behav xil_defaultlib.instructor_tb xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot vga_log_tb_behav xil_defaultlib.vga_log_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_textio
+Compiling package xil_defaultlib.ece383_pkg
+Compiling module xil_defaultlib.glbl
+Compiling architecture behavioral of entity xil_defaultlib.counter [\counter(num_bits=10,max_value=7...]
+Compiling architecture behavioral of entity xil_defaultlib.counter [\counter(num_bits=10,max_value=5...]
+Compiling architecture vga_signal_generator_arch of entity xil_defaultlib.vga_signal_generator [vga_signal_generator_default]
+Compiling architecture color_mapper_arch of entity xil_defaultlib.color_mapper [color_mapper_default]
+Compiling architecture tb of entity xil_defaultlib.vga_log_tb
+Built simulation snapshot vga_log_tb_behav

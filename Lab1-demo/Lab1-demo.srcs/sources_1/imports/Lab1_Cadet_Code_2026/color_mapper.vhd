@@ -23,27 +23,70 @@ signal trigger_color : color_t := YELLOW;
 
 signal is_vertical_gridline, is_horizontal_gridline, is_within_grid, is_trigger_time, is_trigger_volt, is_ch1_line, is_ch2_line,
     is_horizontal_hash, is_vertical_hash : boolean := false;
-
+    
 -- Fill in values here
-constant grid_start_row : integer := ;
-constant grid_stop_row : integer := ;
-constant grid_start_col : integer := ;
-constant grid_stop_col : integer := ;
-constant num_horizontal_gridblocks : integer := ;
-constant num_vertical_gridblocks : integer := ;
-constant center_column : integer := ;
-constant center_row : integer := ;
-constant hash_size : integer := ;
-constant hash_horizontal_spacing : integer := ;
-constant hash_vertical_spacing : integer := ;
+constant grid_start_row : integer := 20;
+constant grid_stop_row : integer := 420;
+constant grid_start_col : integer := 20;
+constant grid_stop_col : integer := 620;
+constant num_horizontal_gridblocks : integer := 10;
+constant num_vertical_gridblocks : integer := 8;
+constant center_column : integer := 320;
+constant center_row : integer := 220;
+constant hash_size : integer := 1;
+constant hash_horizontal_spacing : integer := 15;
+constant hash_vertical_spacing : integer := 10;
+
+constant h_grid_space : integer := grid_stop_col - grid_start_col;
+constant v_grid_space : integer := grid_stop_row - grid_start_row;
+constant v_grid_step  : integer := h_grid_space / num_horizontal_gridblocks;
+constant h_grid_step  : integer := v_grid_space / num_vertical_gridblocks;
 
 begin
 
 -- Assign values to booleans here
-is_horizontal_gridline <= 
+is_within_grid <= (to_integer(position.row) >= grid_start_row) and
+                  (to_integer(position.row) <= grid_stop_row) and
+                  (to_integer(position.col) >= grid_start_col) and
+                  (to_integer(position.col) <= grid_stop_col);
 
--- Use your booleans to choose the color
-color <=        trigger_color when (is_trigger_time or is_trigger_volt) else -- You can do multiple lines like this
-                                   
+is_vertical_gridline <=     is_within_grid and
+                            (
+                                (to_integer(position.col) = grid_start_col) or
+                                (to_integer(position.col) = grid_stop_col) or
+                                (((to_integer(position.col) - grid_start_col) mod v_grid_step) = 0)
+                            );
+
+is_horizontal_gridline <=   is_within_grid and
+                            (
+                                (to_integer(position.row) = grid_start_row) or
+                                (to_integer(position.row) = grid_stop_row) or
+                                (((to_integer(position.row) - grid_start_row) mod h_grid_step) = 0)
+                            );
+
+is_horizontal_hash <=       is_within_grid and
+                                (to_integer(position.row) >= center_row - hash_size) and
+                                (to_integer(position.row) <= center_row + hash_size) and
+                                (((to_integer(position.col) - grid_start_col) mod hash_horizontal_spacing) = 0
+                            );
+
+is_vertical_hash <=         is_within_grid and
+                                (to_integer(position.col) >= center_column - hash_size) and
+                                (to_integer(position.col) <= center_column + hash_size) and
+                                (((to_integer(position.row) - grid_start_row) mod hash_vertical_spacing) = 0
+                            );
+                            
+
+is_trigger_time <= false;
+is_trigger_volt <= false;
+is_ch1_line     <= ch2.en = '1' and ch2.active = '1';
+is_ch2_line     <= ch1.en = '1' and ch1.active = '1';
+
+-- Use your booleans to choose the color                                   
+color <=  trigger_color when (is_trigger_time or is_trigger_volt) else
+          GREEN         when ((is_ch2_line) and is_within_grid) else
+          YELLOW        when ((is_ch1_line) and is_within_grid) else
+          WHITE         when (is_vertical_gridline or is_horizontal_gridline or is_horizontal_hash or is_vertical_hash) else
+          BLACK;
 
 end color_mapper_arch;

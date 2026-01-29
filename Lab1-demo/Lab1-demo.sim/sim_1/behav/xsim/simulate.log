@@ -1,3 +1,2 @@
 Time resolution is 1 ps
-Note: Testing h_sync
-Time: 100 ns  Iteration: 0  Process: /instructor_tb/test_process  File: C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/Lab1-demo/Lab1-demo.srcs/sim_1/imports/Downloads/instructor_tb.vhd
+INFO: xsimkernel Simulation Memory Usage: 36140 KB (Peak: 36140 KB), Simulation CPU Usage: 14734 ms
