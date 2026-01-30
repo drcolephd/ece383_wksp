@@ -32,7 +32,7 @@ architecture structure of video is
     --------------------------------------------------------------------------
     -- Clock Wizard Component Instantiation Using Xilinx Vivado 
     --------------------------------------------------------------------------
-    component clk_wiz_0 is
+    component clk_wiz_2 is
     Port (
         clk_in1 : in STD_LOGIC;
         clk_out1 : out STD_LOGIC;
@@ -48,7 +48,7 @@ begin
 	-- 125MHz HDMI serial output clocks from 100MHz system clock. The Digital 
     -- Clocking Wizard is in the Vivado IP Catalog.
 	--------------------------------------------------------------------------
-	mmcm_adv_inst_display_clocks: clk_wiz_0
+	mmcm_adv_inst_display_clocks: clk_wiz_2
 		Port Map (
 			clk_in1 => clk,
 			clk_out1 => pixel_clk, -- 25Mhz pixel clock

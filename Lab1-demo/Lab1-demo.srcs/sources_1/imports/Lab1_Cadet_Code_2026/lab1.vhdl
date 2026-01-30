@@ -13,7 +13,7 @@ entity lab1 is
     Port ( clk : in  STD_LOGIC;
            reset_n : in  STD_LOGIC;
 		   btn: in	STD_LOGIC_VECTOR(4 downto 0);
-		   led: out STD_LOGIC_VECTOR(4 downto 0);
+		   led: out STD_LOGIC_VECTOR(1 downto 0);
 		   sw: in STD_LOGIC_VECTOR(1 downto 0);
            tmds : out  STD_LOGIC_VECTOR (3 downto 0);
            tmdsb : out  STD_LOGIC_VECTOR (3 downto 0));
@@ -22,15 +22,10 @@ end lab1;
 architecture structure of lab1 is
 
     constant CENTER : integer := 0;
-    constant DOWN : integer := 1;
+    constant DOWN : integer := 4;
     constant LEFT : integer := 2;
     constant RIGHT : integer := 3;
-    constant UP : integer := 4;
-    
-    constant grid_start_row : integer := 20;
-    constant grid_stop_row  : integer := 420;
-    constant grid_start_col : integer := 20;
-    constant grid_stop_col  : integer := 620;
+    constant UP : integer := 1;
 
     signal trigger: trigger_t;
 	signal pixel: pixel_t;
@@ -94,8 +89,22 @@ u_video : entity work.video
 -- Determine if ch1 and or ch2 are active
 ch1.en <= sw(0);
 ch2.en <= sw(1);
+
+process(clk)
+    begin
+      if rising_edge(clk) then
+        if reset_n = '0' then
+          ch1.active <= '0';
+          ch2.active <= '0';
+        else
+          ch1.active <= sw(0);
+          ch2.active <= sw(1);
+        end if;
+      end if;
+end process;  
     
 -- Connect board hardware to signals
-led <= btn;
+led(0) <= sw(0);
+led(1) <= sw(1);
 	
 end structure;

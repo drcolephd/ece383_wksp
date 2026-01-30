@@ -76,11 +76,18 @@ is_vertical_hash <=         is_within_grid and
                                 (((to_integer(position.row) - grid_start_row) mod hash_vertical_spacing) = 0
                             );
                             
+is_ch1_line            <= true when (position.col = position.row) and is_within_grid and (ch1.en = '1' and ch1.active = '1') else false;
+ 
+is_ch2_line            <= true when (grid_stop_row + 20 - position.row) = position.col and is_within_grid and (ch2.en = '1' and ch2.active = '1') else false;
+ 
+is_trigger_time        <= true when is_within_grid and abs(to_integer(position.col) - to_integer(trigger.t)) < 7 - (to_integer(position.row) - 20)
 
-is_trigger_time <= false;
-is_trigger_volt <= false;
-is_ch1_line     <= ch2.en = '1' and ch2.active = '1';
-is_ch2_line     <= ch1.en = '1' and ch1.active = '1';
+                          else false;
+
+is_trigger_volt        <= true when is_within_grid and abs(to_integer(position.row) - to_integer(trigger.v)) < 7 - (to_integer(position.col) - 20)
+
+                          else false;
+ 
 
 -- Use your booleans to choose the color                                   
 color <=  trigger_color when (is_trigger_time or is_trigger_volt) else
