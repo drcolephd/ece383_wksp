@@ -1,0 +1,6 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/bswei/Downloads/Homework_7/button_debounce.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'button_debounce'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/bswei/Downloads/Homework_7/lec10.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'lec10'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/bswei/Downloads/Homework_7/hw07_tb.vhdl" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'hw07_tb'
