@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1769747556" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/lab1.dcp">
-  <File Type="PA-TCL" Name="lab1.tcl"/>
   <File Type="REPORTS-TCL" Name="lab1_reports.tcl"/>
-  <File Type="RDS-RDS" Name="lab1.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="lab1_drc_synth.rpt"/>
   <File Type="RDS-UTIL" Name="lab1_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="lab1_utilization_synth.pb"/>
+  <File Type="PA-TCL" Name="lab1.tcl"/>
+  <File Type="RDS-RDS" Name="lab1.vds"/>
   <File Type="RDS-DCP" Name="lab1.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="lab1_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="lab1_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/ip/clk_wiz_2/clk_wiz_2.xci">
