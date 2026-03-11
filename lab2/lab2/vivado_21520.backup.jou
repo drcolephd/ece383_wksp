@@ -1,0 +1,99 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Feb 17 22:28:13 2026
+# Process ID         : 21520
+# Current directory  : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent10308 C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.xpr
+# Log file           : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/vivado.log
+# Journal file       : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2\vivado.jou
+# Running On         : C27-5CG31328K0
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 47185 MB
+# Total Virtual      : 63628 MB
+# Available Virtual  : 49974 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.xpr
+update_compile_order -fileset sources_1
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+open_project C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/Lab1-demo/Lab1-demo.xpr
+current_project lab2
+current_project Lab1-demo
+file mkdir C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new
+current_project lab2
+close [ open C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl w ]
+add_files C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+current_project Lab1-demo
+current_project lab2
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+export_ip_user_files -of_objects  [get_files C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/video.vhdl] -no_script -reset -force -quiet
+remove_files  C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/video.vhdl
+export_ip_user_files -of_objects  [get_files C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/imports/Lab1_Cadet_Code_2026/dvid.vhdl] -no_script -reset -force -quiet
+remove_files  C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/imports/Lab1_Cadet_Code_2026/dvid.vhdl
+export_ip_user_files -of_objects  [get_files C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl] -no_script -reset -force -quiet
+remove_files  C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl
+remove_files  {C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/imports/Lab1_Cadet_Code_2026/dvid.vhdl C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/video.vhdl}
+file delete -force C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/new/vga.vhdl C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/imports/Lab1_Cadet_Code_2026/dvid.vhdl C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/imports/Lab1_Cadet_Code_2026/video.vhdl
+current_project Lab1-demo
+set_property -dict [list \
+  CONFIG.CLK_IN1_BOARD_INTERFACE {sys_clock} \
+  CONFIG.RESET_BOARD_INTERFACE {reset} \
+] [get_ips clk_wiz_2]
+update_compile_order -fileset sources_1
+current_project lab2
+create_ip -name clk_wiz -vendor xilinx.com -library ip -version 6.0 -module_name clk_wiz_2
+set_property -dict [list \
+  CONFIG.CLKOUT1_JITTER {175.402} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {25} \
+  CONFIG.CLKOUT2_JITTER {125.247} \
+  CONFIG.CLKOUT2_PHASE_ERROR {98.575} \
+  CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {125} \
+  CONFIG.CLKOUT2_USED {true} \
+  CONFIG.CLKOUT3_JITTER {125.247} \
+  CONFIG.CLKOUT3_PHASE_ERROR {98.575} \
+  CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {125} \
+  CONFIG.CLKOUT3_REQUESTED_PHASE {180} \
+  CONFIG.CLKOUT3_USED {true} \
+  CONFIG.CLK_IN1_BOARD_INTERFACE {sys_clock} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {40.000} \
+  CONFIG.MMCM_CLKOUT1_DIVIDE {8} \
+  CONFIG.MMCM_CLKOUT2_DIVIDE {8} \
+  CONFIG.MMCM_CLKOUT2_PHASE {180.000} \
+  CONFIG.NUM_OUT_CLKS {3} \
+  CONFIG.RESET_BOARD_INTERFACE {reset} \
+  CONFIG.RESET_PORT {resetn} \
+  CONFIG.RESET_TYPE {ACTIVE_LOW} \
+  CONFIG.USE_LOCKED {false} \
+] [get_ips clk_wiz_2]
+generate_target {instantiation_template} [get_files c:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/ip/clk_wiz_2/clk_wiz_2.xci]
+current_project Lab1-demo
+current_project lab2
+generate_target all [get_files  c:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.srcs/sources_1/ip/clk_wiz_2/clk_wiz_2.xci]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+current_project Lab1-demo
+current_project lab2
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1

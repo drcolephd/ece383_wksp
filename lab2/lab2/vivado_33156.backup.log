@@ -1,0 +1,94 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Feb 18 17:56:51 2026
+# Process ID         : 33156
+# Current directory  : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent10580 C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.xpr
+# Log file           : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/vivado.log
+# Journal file       : C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2\vivado.jou
+# Running On         : C27-5CG31328K0
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 PRO 6850U with Radeon Graphics     
+# CPU Frequency      : 2695 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16442 MB
+# Swap memory        : 47185 MB
+# Total Virtual      : 63628 MB
+# Available Virtual  : 46310 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/lab2/lab2/lab2.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.2/data/ip'.
+open_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:12 . Memory (MB): peak = 1146.312 ; gain = 87.367
+update_compile_order -fileset sources_1
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+open_project C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/Lab1-demo/Lab1-demo.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.2/data/ip'.
+open_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1434.328 ; gain = 24.031
+current_project lab2
+current_project Lab1-demo
+current_project lab2
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\lab1.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+update_compile_order -fileset sources_1
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\lab1.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\lab1.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\lab1.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\Lab1-demo\Lab1-demo.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\imports\Lab1_Cadet_Code_2026\video.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Lab1_Cadet_Code_2026\vga.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\C27Brandon.Sweitzer\workspace\ece383_wksp\lab2\lab2\lab2.srcs\sources_1\imports\Downloads\Lab02_cadet_code\lab2_code_for_cadets_2026\dvid.vhdl:]
