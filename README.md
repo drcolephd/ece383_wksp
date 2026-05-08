@@ -1,106 +1,413 @@
-Introduction:
+ECE 383 Final Project - Tetris
+Brandon Sweitzer
 
-Lab 1 displays oscilloscope graphics using VGA built from the ground-up. Everything from the timing signals, pixel coordinates, and color-mapping to the drawing of the grid lines and waveform channels were made from scratch. User inputs can adjust the trigger indicators and enable and disable the waveform channels using the buttons and switches on the FPGA board. The final product outputs that VGA signal over the board's HDMI port to an external display.
+1.	Plan
 
-Design/Implementation:
+a.	Proposal
 
-    Lab1 interfaces with the board's I/O and instantiates the numeric steppers and video subsystem, connecting intermediate control signals.
+The objective of this project was to design and implement a fully hardware-based Tetris game on the FPGA board using VHDL. The system was designed to demonstrate real-time embedded system concepts including finite state machines, memory management, external device interfacing, and video generation.
 
-        Inputs:
-                clk - system clock
-                reset_n - active-low reset
-                btn - pushbuttons
-                sw - channel enable/disable switches
+The project uses HDMI/VGA output to display gameplay, an NES controller connected through the JA pins for user input, and custom hardware modules for all game functionality. Unlike software-based games that rely on processors, this implementation performs all gameplay operations directly in hardware.
 
-        Outputs:
-                tmds & tmdsb - HDMI output signals
-                led - show when switches are on
+The final project fulfills the requirement of interfacing with an external device by integrating an NES controller through the JA header interface.
 
-        Buttons increment/decrement trigger values using numeric steppers. Switches determine whether channels are enabled.
+b.	Minimum Functionality
+•	Display playable Tetris board using HDMI output
+•	Spawn and move tetrominoes
+•	Rotate pieces
+•	Detect collisions
+•	Lock pieces into the board
+•	Detect game over condition
 
-    Numeric Stepper stores and adjusts numeric values based on button activity.
+c.	B-Level Functionality
+•	Line clearing
+•	Piece randomization
+•	Score tracking
+•	Increasing game speed
+•	Next piece preview
 
-        Inputs:
-                clk
-                reset_n
-                up - button to increment value
-                down - button to decrement value
-                en - enable (high/low signal)
+d.	A-Level Functionality
+•	NES controller support
+•	Hold/swap piece functionality
+•	Real-time preview windows
+•	Dynamic game speed scaling
+•	Graphical score and line counters
 
-        Output:
-                q - stored value
+2.	Detailed Architecture and Sub-System Design
 
-        Rising clock edge detects signal on up/down and adjusts Q accordingly, adding or subtracting based on a defined delta value and keeping Q between defined min and max values.
+a.	Level 1 Design
 
-    Video connects different clocks with IP-provided clocking wizard as well as broader VGA timing, color handling, and digital signal encoding for HDMI output.
+The Tetris system was divided into several hardware subsystems.
 
-        Inputs:
-                clk
-                reset_n
-                trigger - handles display of triangles at edges of screen to represent trigger values
-                ch1 - waveform 1 signal
-                ch2 - waveform 2 signal
+b.	Major Subsystems
+1.	Game FSM
+2.	Piece Logic
+3.	Collision Detector
+4.	Board Memory
+5.	Line Clear Detector
+6.	Video/VGA System
+7.	NES Controller Interface
+8.	Score Counter
+9.	Game Clock
+10.	Piece Randomizer
 
-        Outputs:
-                tmds & tmdsb
-                position - pixel coordinates in row/column form
+c.	Top-Level Data Flow
 
-    VGA Signal Generator handles the specific VGA timing and processes the pixel coordinates from Video.
+NES Controller
+Game FSM 
+Piece Logic
+Collision Detector
+Board Memory
+Line Clear
+Video/Color Mapper 
+HDMI Output
 
-        Outputs:
-                hsync - horizontal sync signal part of VGA scanning scheme, indicates when position is a usable part of the screen
-                vsync - vertical sync signal part of VGA scanning scheme, functions identically to hsync
-                blank - indicates whether current position is in usable screen area (high/low signal)
-                row - y position
-                column - x position
+d.	Game FSM
 
-        Implements horizontal/vertical counters to track 640x480 screen area
+The game FSM acts as the main control unit for the system. It controls spawning pieces, falling logic, locking pieces into the board, line clearing, and game-over transitions.
 
-    Color Mapper uses trigger values and state of waveforms to decide drawn colors on the screen
+Key FSM states include:
 
-        Inputs:
-                pixel - (row, column, blank)
-                trigger
-                ch1
-                ch2
-        Output:
-                RGB Color string
+•	RESET_INIT
+•	SPAWN_PIECE
+•	WAIT_SPAWN
+•	CHECK_SPAWN
+•	FALLING
+•	LOCK_CAPTURE
+•	LOCK_PIECE
+•	WAIT_LOCK
+•	CHECK_CLEAR
+•	CLEAR_ROWS
+•	WAIT_CLEAR
+•	GAME_OVER
 
-        Handles the grid lines, trigger markers, and channel waveforms.
+The FSM coordinates communication between all gameplay modules.
 
-    DVID Encoder takes in video data and combines VGA timing and color data into HDMI signal to allow video output on FPGA board.
+e.	Piece Logic
 
-Test/Debug:
-            Use of provided Instructor_tb verified functionality of VGA timing and counters.
+The piece logic module stores the active tetromino state, tracking:
 
-            vga log testbench simulated VGA signal and outputted data to .txt file which was rendered on the online VGA simulator to show basic functionality with waveforms and gridlines
+•	Piece X position
+•	Piece Y position
+•	Rotation state
+•	Piece type
+•	Hold piece
+•	Next piece
 
-            After basic functionality of the VGA signal was established, I performed hardware testing, on the FPGA board, verifying proper I/O functionality and display response. 
+The module generates the active piece cell coordinates used by both the renderer and collision detector.
 
-            Initially, the hoirzontal and vertical counters were limited to 640 and 480 as I misunderstood their purpose and forgot to include the extra front porch/sync/back porch data which caused incorrect sync behavior. To fix this, the hoirzontal and vertical counter maximums were adjusted to 799 and 524 respectively to accomodate the requisite data signals.
+f.	Collision Detector
 
-            Early simulations stopped before showing the counter's rollover behavior, making it seem like the counters were not wrapping correctly. The testbench simulation time was increased so the counters could hit their max values and demonstrate the rollover behavior and vertical increment.
+The collision detector validates movement requests before the FSM commits movement operations.
+The detector checks:
+•	Left movement validity
+•	Right movement validity
+•	Downward movement validity
+•	Rotation validity
+•	Spawn validity
+•	Hard drop position
 
-            The diagonal channel traces extended beyond the oscilloscope grid and into the unused screen area. To fix this, the channel activation logic was gated with row and column ranges that corresponded to the usable screen space.
+This modular approach simplified the FSM and improved debugging.
 
-            Horizontal hash marks showed up lower than the expected midline of the grid. To fix this, the center_row constant in Color Mapper was adjusted to the correct value between grid_start_row and grid_stop_row.
+g.	Board Memory
 
-            Although the switches were wired to ch1.en and ch2.en, the channels always remained on regardless of the switch state. Updating the logic in Color Mapper to take both the enable and activate channel signals corrected that behavior ensuring the switches changed the waveform visibility.
+The board memory module stores the locked game board state as a 10x20 grid.
+The board originally stored full 24-bit RGB color values but was later optimized to store compact 3-bit cell identifiers. This significantly reduced synthesis complexity and improved timing.
+Responsibilities include:
+•	Storing locked blocks
+•	Writing newly locked pieces
+•	Clearing completed rows
+•	Shifting rows downward
 
-            I ran into a lot of synthesis issues because my IP clocking wizard was improperly configured to only have one output clock and use the normal reset signal instead of the active-low reset_n signal. Going into the IP configurator made fixing the clocking wizard easy but I was unable to replicate the issue.
+h.	Line Clear Module
 
-            ![alt text](https://github.com/drcolephd/ece383_wksp/blob/main/Lab1-demo/screenshots/blankflip.png)
-            ![alt text](https://github.com/drcolephd/ece383_wksp/blob/main/Lab1-demo/screenshots/horizontal_rollup.png)
-            ![alt text](https://github.com/drcolephd/ece383_wksp/blob/main/Lab1-demo/screenshots/rowflip.png)
+The line clear detector scans the board for completed rows.
 
-Results:
-            VGA Timing/Pixel coordinates: Completed 1/22/2026. Created hsync/vsync/blank signals and horizontal/vertical counters for rows and columns. Waveform screenshots submitted
+Outputs include:
+•	rows_cleared
+•	clear_en
+•	shift_en
+•	
+The FSM then performs controlled row clearing and shifting operations.
 
-            VGA Image Output: Completed 1/27/2026. Output oscilloscope grid and hashmarks. Demo'd to instructor
+i.	Video System
 
-            Channel enable & Full display output: Completed 1/29/2026. Output waveforms to oscilloscope grid. Demo'd to instructor.
+The video system consists of:
+•	VGA signal generator
+•	Color mapper
+•	DVID/HDMI conversion
 
-            Trigger and Waveform control: Completed 1/29/2026. Manipulate waveforms with switches and triggers with buttons. Video submitted to instructor.
+The color mapper renders:
+•	Active piece
+•	Locked board blocks
+•	Board boundaries
+•	Hold piece preview
+•	Next piece preview
+•	Score display
+•	Line counter
 
-Conclusion:
-            This lab shined a light on how seemingly complicated digital systems such as the oscilloscopes we use in our electronics labs are fundamentally built on smaller modules that we are capable of creating ourselves. The tolerances in the VGA timing are tight, demanding precision and coordination between sync signals and horizontal and vertical scanning. Hardware debugging was a lengthy process due to the time required to synthesize and implement the project files, so software testbenches proved invaluable in assessing device behavior in a timely manner. Future iterations of this lab could benefit from some conversations on debouncing and how to clean inputs coming into a system.
+The video output is displayed through HDMI.
+
+j.	NES Controller Interface
+
+The NES controller communicates through the JA header interface.
+
+JA Pin Mapping:
+•	JA0: Latch
+•	JA1: Clock
+•	JA2: Data
+
+The NES module serially reads controller button states and converts them into gameplay control signals.
+
+Supported controls:
+•	Left movement
+•	Right movement
+•	Rotate
+•	Soft drop
+•	Hard drop
+•	Hold/swap
+•	Reset
+
+k.	Score Counter
+
+The score counter tracks:
+•	Total score
+•	Total lines cleared
+•	Game level
+
+The level output is used to dynamically increase game speed.
+
+l.	Game Clock
+
+The game clock generates the falling tick for the gameplay system. The tick frequency changes dynamically based on player level. As more lines are cleared, the falling speed increases.
+
+m.	Piece Randomizer
+
+A linear-feedback shift register (LFSR) was used to generate pseudo-random tetromino sequences. This provided randomized gameplay while remaining fully synthesizable in hardware.
+
+3.	Calculations / Analysis / Drawings
+
+a.	Board Geometry
+The game board consists of:
+•	10 columns
+•	20 rows
+•	20x20 pixel cells
+
+This resulted in a 200x400 pixel gameplay area.
+
+b.	Preview Windows
+
+The hold and next-piece preview windows use scaled-down 12x12 pixel cells.
+
+c.	Fixed-Point and Timing Considerations
+
+The game clock frequency was adjusted dynamically using counter thresholds.
+
+Speed levels:
+Level	Tick Count
+0	25,000,000
+1	20,000,000
+2	15,000,000
+3	10,000,000
+4+	7,500,000
+
+d.	Collision Detection
+
+Collision detection was implemented using board coordinate comparisons.
+
+A valid move required:
+•	Board bounds maintained
+•	No overlap with locked blocks
+
+e.	Memory Optimization
+
+The board representation was optimized from 24-bit RGB storage to compact 3-bit cell identifiers. This reduced board storage requirements from approximately 4800 bits to 600 bits, which greatly helped with synthesis time for debugging and testing.
+
+4.	Milestone I
+
+a.	Objective
+
+Achieve basic playable Tetris functionality.
+
+b.	Milestone I Requirements
+•	VGA/HDMI output operational
+•	Single tetromino displayed
+•	Piece falling logic operational
+•	Piece movement operational
+•	Collision detection functional
+
+c.	Testing Performed
+•	Verified HDMI signal generation
+•	Verified active piece rendering
+•	Verified left/right movement
+•	Verified soft drop operation
+•	Verified collision with floor and walls
+
+d.	Results
+
+Milestone I functionality was successfully achieved.
+
+5.	Milestone II
+
+a.	Objective
+
+Implement advanced gameplay systems and external controller support.
+
+b.	Milestone II Requirements
+•	NES controller integration
+•	Line clearing
+•	Hold/swap system
+•	Randomized pieces
+•	Score tracking
+•	Dynamic speed scaling
+
+c.	Testing Performed
+•	Verified NES button decoding
+•	Verified hold/swap functionality
+•	Verified line clear detection
+•	Verified row shifting logic
+•	Verified score updates
+•	Verified increasing game speed
+
+d.	Results
+
+Milestone II functionality was successfully achieved.
+
+6.	Updated Functionality and Requirements
+
+a.	Final Functionality Achieved
+•	Real-time Tetris gameplay
+•	Hardware-only implementation
+•	HDMI graphics output
+•	NES controller input
+•	Piece movement and rotation
+•	Hard drop
+•	Hold/swap system
+•	Next-piece preview
+•	Randomized piece generation
+•	Score tracking
+•	Line counter
+•	Dynamic speed scaling
+•	Game-over detection
+
+b.	Challenges Encountered
+
+Several significant debugging challenges occurred during development:
+•	Timing issues between line clear and piece spawning
+•	Random board corruption caused by unsafe memory updates
+•	Rotation edge cases near walls
+•	NES controller synchronization issues
+•	Collision mismatch between renderer and collision detector
+
+These issues were resolved by:
+•	Adding FSM wait states
+•	Centralizing piece coordinate logic
+•	Optimizing board memory handling
+•	Improving controller timing synchronization
+•	Reworking preview rendering logic
+
+7.	Milestone I
+
+Milestone I successfully demonstrated the minimum playable implementation of Tetris.
+
+The system could:
+•	Display graphics through HDMI
+•	Spawn tetrominoes
+•	Move pieces left and right
+•	Detect floor collisions
+•	Lock pieces into the board
+
+The milestone validated the functionality of the video system, game FSM, and basic gameplay loop.
+
+8.	Milestone II
+
+Milestone II expanded the project into a fully featured game.
+
+Additional features implemented:
+•	NES controller support
+•	Hold/swap piece system
+•	Line clearing
+•	Score tracking
+•	Randomized pieces
+•	Dynamic speed increase
+•	Next piece preview
+
+The milestone demonstrated successful integration between all level 1 subsystems.
+
+9.	Final Demonstration and Test Results
+
+The final system successfully demonstrated a fully playable hardware-based Tetris implementation.
+
+a.	Successfully Demonstrated Features
+•	Stable HDMI output
+•	Real-time gameplay
+•	Responsive NES controller input
+•	Proper collision handling
+•	Correct line clearing
+•	Hold/swap operation
+•	Next-piece preview
+•	Dynamic gameplay speed increase
+•	Score and line tracking
+•	Game-over handling
+
+b.	Final Performance
+
+The system operated in real time without requiring a software processor.
+All gameplay operations were implemented directly in custom VHDL hardware.
+
+The final design demonstrated:
+•	Real-time rendering
+•	Deterministic gameplay timing
+•	Stable hardware operation
+•	Modular hardware architecture
+
+c.	Lessons Learned
+
+This project demonstrated the importance of:
+•	Modular hardware design
+•	FSM-based control systems
+•	Careful synchronization between modules
+•	Memory optimization for FPGA synthesis
+•	Incremental hardware debugging
+
+The project also provided significant experience with:
+•	FPGA development
+•	HDMI graphics generation
+•	External peripheral interfacing
+•	Real-time embedded systems
+
+ 
+Appendix A: Running the Project
+
+Required Hardware
+•	FPGA development board
+•	HDMI monitor
+•	HDMI cable
+•	NES controller
+•	JA connection wires
+
+Setup Procedure
+1.	Open the Vivado project.
+2.	Generate the bitstream.
+3.	Program the FPGA.
+4.	Connect the HDMI monitor.
+5.	Connect the NES controller to the JA pins.
+6.	Reset the FPGA.
+7.	The game should automatically begin.
+
+NES Wiring
+JA Pin	NES Signal
+JA0	Latch
+JA1	Clock
+JA2	Data
+
+Controls
+NES Button	Action
+Left	Move left
+Right	Move right
+A	Rotate
+Down	Soft drop
+B	Hard drop
+Select	Hold/swap
+Start	Reset game
+
