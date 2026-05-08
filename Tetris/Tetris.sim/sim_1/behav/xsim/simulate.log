@@ -1,0 +1,5 @@
+Time resolution is 1 ps
+Failure: Simulation complete.
+Time: 40008400 ns  Iteration: 0  Process: /vga_log_tb/stim  File: C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/Tetris/Tetris.srcs/sim_1/imports/Downloads/vga_log_tb.vhd
+$finish called at time : 40008400 ns : File "C:/Users/C27Brandon.Sweitzer/workspace/ece383_wksp/Tetris/Tetris.srcs/sim_1/imports/Downloads/vga_log_tb.vhd" Line 97
+INFO: xsimkernel Simulation Memory Usage: 36172 KB (Peak: 36172 KB), Simulation CPU Usage: 12953 ms

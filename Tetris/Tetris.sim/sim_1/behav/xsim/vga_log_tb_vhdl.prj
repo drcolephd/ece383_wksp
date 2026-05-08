@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Tetris.srcs/sources_1/imports/Lab1_Cadet_Code_2026/ece383_pkg.vhd" \
+"../../../../Tetris.srcs/sources_1/imports/Lab1_Cadet_Code_2026/color_mapper.vhd" \
+"../../../../Tetris.srcs/sources_1/imports/381572701/counter.vhdl" \
+"../../../../Tetris.srcs/sources_1/imports/Lab1_Cadet_Code_2026/vga_signal_generator.vhd" \
+"../../../../Tetris.srcs/sim_1/imports/Downloads/vga_log_tb.vhd" \
+
+# Do not sort compile order
+nosort
