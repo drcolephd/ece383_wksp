@@ -379,22 +379,6 @@ The project also provided significant experience with:
  
 Appendix A: Running the Project
 
-Required Hardware
-•	FPGA development board
-•	HDMI monitor
-•	HDMI cable
-•	NES controller
-•	JA connection wires
-
-Setup Procedure
-1.	Open the Vivado project.
-2.	Generate the bitstream.
-3.	Program the FPGA.
-4.	Connect the HDMI monitor.
-5.	Connect the NES controller to the JA pins.
-6.	Reset the FPGA.
-7.	The game should automatically begin.
-
 NES Wiring
 JA Pin	NES Signal
 JA0	Latch
